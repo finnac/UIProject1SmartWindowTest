@@ -4,9 +4,11 @@ import 'rc-slider/assets/index.css';
 
 function ButtonOptions() {
   const [sliderValue, setSliderValue] = useState(50);
+  const [textInput, setTextInput] = useState('');
 
   const handleSliderChange = (value) => {
     setSliderValue(value);
+    setTextInput(value.toString());
   }
 
   const handleInputChange = (e) => {
@@ -17,6 +19,18 @@ function ButtonOptions() {
       value = 0;
     }
     setSliderValue(value);
+    setTextInput(value.toString());
+
+    // Check if the input value matches a button value
+    const matchingButton = buttons.find(button => button.value.toString() === value.toString());
+    if (matchingButton) {
+      handleButtonClick(matchingButton.value);
+    }
+  }
+
+  const handleButtonClick = (value) => {
+    setSliderValue(value);
+    setTextInput(value.toString());
   }
 
   const buttons = [
@@ -36,13 +50,13 @@ function ButtonOptions() {
           <label>Value:</label>
           <input 
             type="number" 
-            value={sliderValue} 
+            value={textInput} 
             onChange={handleInputChange}
             style={{ maxWidth: '50px' }}
           />
         </div>
       </div>
-      <div className="btn-group btn-group-toggle btn-group-lg" data-toggle="buttons">
+      <div className="btn-group btn-group-toggle" data-toggle="buttons">
         {buttons.map((button) => (
           <label 
             key={button.id}
@@ -54,7 +68,8 @@ function ButtonOptions() {
               name="options"
               value={button.value}
               autoComplete="off"
-              onChange={() => setSliderValue(button.value)}
+              onChange={() => handleButtonClick(button.value)}
+              checked={sliderValue === button.value && textInput === button.value.toString()}
             />{" "}
             {button.label}
           </label>
