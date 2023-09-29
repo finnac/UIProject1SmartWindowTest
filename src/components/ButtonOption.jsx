@@ -1,19 +1,34 @@
-function ButtonOptions() {
-    return (
-      <>
-      <div class="btn-group btn-group-toggle btn-group-md" data-toggle="buttons">
-        <label class="btn btn-danger">
-          <input type="radio" name="options" id="option1" autocomplete="off" /> None
-        </label>
-        <label class="btn btn-primary">
-          <input type="radio" name="options" id="option2" autocomplete="off"/> Half
-        </label>
-        <label class="btn btn-success">
-          <input type="radio" name="options" id="option3" autocomplete="off"/> Full
-        </label>
-        </div>
-      </>
-    );
-  }
+function CustomizableButton({ id, label, value, name, onChange }) {
+  return (
+    <label className={`btn btn-${value}`} style={{ width: "150px" }}>
+      <input
+        type="radio"
+        name={name}
+        id={id}
+        value={value}
+        autoComplete="off"
+        onChange={onChange}
+      />{" "}
+      {label}
+    </label>
+  );
+}
 
-  export default ButtonOptions;
+function ButtonOptions({ buttons, name, onChange }) {
+  return (
+    <div className="btn-group btn-group-toggle" data-toggle="buttons">
+      {buttons.map((button) => (
+        <CustomizableButton
+          key={button.id}
+          id={button.id}
+          label={button.label}
+          value={button.value}
+          name={name}
+          onChange={onChange}
+        />
+      ))}
+    </div>
+  );
+}
+
+export { ButtonOptions, CustomizableButton };
