@@ -6,7 +6,10 @@ import ButtonOptions from './components/ButtonOptions'
 function App() {
   return (
     <div>
-      <ButtonOptions />
+      <ButtonOptions 
+        title="Window Opening" 
+        windowLabelText="% your window is open:" // Customizable label
+      />
     </div>
   );
 }

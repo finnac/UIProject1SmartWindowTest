@@ -3,7 +3,7 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import './ButtonOptions.css'; // Create a CSS file for additional styles
 
-function ButtonOptions() {
+function ButtonOptions({title, windowLabelText}) {
   const [sliderValue, setSliderValue] = useState(50);
   const [textInput, setTextInput] = useState('');
 
@@ -42,6 +42,7 @@ function ButtonOptions() {
 
   return (
     <div className="control-wrapper">
+      <h2>{title}</h2> {/* Customizable Title */}
       <div className="button-options-container">
         <div className="button-group">
           {buttons.map((button) => (
@@ -65,7 +66,7 @@ function ButtonOptions() {
           <Slider min={0} max={100} value={sliderValue} onChange={handleSliderChange} />
         </div>
         <div className="text-input-container">
-          <label>% your window is open:  </label>
+          <label>{windowLabelText}</label>
           <input 
             type="number" 
             value={textInput} 
