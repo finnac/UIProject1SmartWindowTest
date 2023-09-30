@@ -60,8 +60,7 @@ function ButtonOptions() {
           </label>
         ))}
       </div>
-      <div className="slider-container" style={{ width: '200px' }}>
-        <label>% opened</label>
+      <div className="slider-container" style={{ width: '270px' }}>
         <Slider min={0} max={100} value={sliderValue} onChange={handleSliderChange} />
       </div>
       <div className="text-input-container">
