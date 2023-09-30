@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import './ButtonOptions.css'; // Create a CSS file for additional styles
 
 function ButtonOptions() {
   const [sliderValue, setSliderValue] = useState(50);
@@ -40,28 +41,12 @@ function ButtonOptions() {
   ];
 
   return (
-    <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <div>
-          <label>% opened</label>
-          <Slider min={0} max={100} value={sliderValue} onChange={handleSliderChange} />
-        </div>
-        <div>
-          <label>Value:</label>
-          <input 
-            type="number" 
-            value={textInput} 
-            onChange={handleInputChange}
-            style={{ maxWidth: '50px' }}
-          />
-        </div>
-      </div>
-      <div className="btn-group btn-group-toggle" data-toggle="buttons">
+    <div className="button-options-container">
+      <div className="button-group">
         {buttons.map((button) => (
           <label 
             key={button.id}
             className={`btn btn-${button.value} ${sliderValue === button.value ? 'active' : ''}`} 
-            style={{ width: "100px" }}
           >
             <input
               type="radio"
@@ -74,6 +59,19 @@ function ButtonOptions() {
             {button.label}
           </label>
         ))}
+      </div>
+      <div className="slider-container">
+        <label>% opened</label>
+        <Slider min={0} max={100} value={sliderValue} onChange={handleSliderChange} />
+      </div>
+      <div className="text-input-container">
+        <label style={{ paddingRight: '10px' }}>% your window is open:  </label>
+        <input 
+          type="number" 
+          value={textInput} 
+          onChange={handleInputChange}
+          style={{ maxWidth: '50px' }}
+        />
       </div>
     </div>
   );

@@ -1,0 +1,23 @@
+.button-options-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .button-group {
+    display: flex;
+  }
+  
+  .slider-container {
+    margin-top: 20px;
+    margin-left: 20px;
+    text-align: center;
+  }
+  
+  .text-input-container {
+    margin-top: 10px;
+    margin-left: 20px;
+    text-align: center;
+  }
+  
