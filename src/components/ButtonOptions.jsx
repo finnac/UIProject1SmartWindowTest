@@ -41,36 +41,38 @@ function ButtonOptions() {
   ];
 
   return (
-    <div className="button-options-container">
-      <div className="button-group">
-        {buttons.map((button) => (
-          <label 
-            key={button.id}
-            className={`btn ${button.value === 0 ? 'btn-danger' : button.value === 50 ? 'btn-primary' : 'btn-success'} ${sliderValue === button.value ? 'active' : ''}`} 
-          >
-            <input
-              type="radio"
-              name="options"
-              value={button.value}
-              autoComplete="off"
-              onChange={() => handleButtonClick(button.value)}
-              checked={sliderValue === button.value && textInput === button.value.toString()}
-            />{" "}
-            {button.label}
-          </label>
-        ))}
-      </div>
-      <div className="slider-container" style={{ width: '270px' }}>
-        <Slider min={0} max={100} value={sliderValue} onChange={handleSliderChange} />
-      </div>
-      <div className="text-input-container">
-        <label style={{ paddingRight: '10px' }}>% your window is open:  </label>
-        <input 
-          type="number" 
-          value={textInput} 
-          onChange={handleInputChange}
-          style={{ maxWidth: '50px' }}
-        />
+    <div className="control-wrapper">
+      <div className="button-options-container">
+        <div className="button-group">
+          {buttons.map((button) => (
+            <label 
+              key={button.id}
+              className={`btn ${button.value === 0 ? 'btn-danger' : button.value === 50 ? 'btn-primary' : 'btn-success'} ${sliderValue === button.value ? 'active' : ''}`} 
+            >
+              <input
+                type="radio"
+                name="options"
+                value={button.value}
+                autoComplete="off"
+                onChange={() => handleButtonClick(button.value)}
+                checked={sliderValue === button.value && textInput === button.value.toString()}
+              />{" "}
+              {button.label}
+            </label>
+          ))}
+        </div>
+        <div className="slider-container" style={{ width: '200px' }}>
+          <Slider min={0} max={100} value={sliderValue} onChange={handleSliderChange} />
+        </div>
+        <div className="text-input-container">
+          <label>% your window is open:  </label>
+          <input 
+            type="number" 
+            value={textInput} 
+            onChange={handleInputChange}
+            style={{ maxWidth: '50px' }}
+          />
+        </div>
       </div>
     </div>
   );
