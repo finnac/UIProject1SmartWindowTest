@@ -1,23 +1,80 @@
 .button-options-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .button-group {
-    display: flex;
-  }
-  
-  .slider-container {
-    margin-top: 20px;
-    margin-left: 20px;
-    text-align: center;
-  }
-  
-  .text-input-container {
-    margin-top: 10px;
-    margin-left: 20px;
-    text-align: center;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.button-group {
+  display: flex;
+}
+
+.btn-danger,
+.btn-primary,
+.btn-success {
+  border-radius: 0; /* Set border-radius to 0 to remove rounded corners */
+  border: 1px solid #ccc; /* Add a border with a consistent color */
+  width: 100px; /* Set a fixed width for all buttons */
+  height: 38px; /* Set a fixed height for all buttons */
+  outline: none; /* Remove the outline when focused */
+}
+
+.btn-danger:first-child,
+.btn-primary:first-child,
+.btn-success:first-child {
+  border-top-left-radius: 4px; /* Set top-left border-radius for the first button */
+  border-bottom-left-radius: 4px; /* Set bottom-left border-radius for the first button */
+  border-top-right-radius: 0; /* Set top-right border-radius to 0 for the first button */
+  border-bottom-right-radius: 0; /* Set bottom-right border-radius to 0 for the first button */
+}
+
+.btn-danger:last-child,
+.btn-primary:last-child,
+.btn-success:last-child {
+  border-top-right-radius: 4px; /* Set top-right border-radius for the last button */
+  border-bottom-right-radius: 4px; /* Set bottom-right border-radius for the last button */
+  border-top-left-radius: 0; /* Set top-left border-radius to 0 for the last button */
+  border-bottom-left-radius: 0; /* Set bottom-left border-radius to 0 for the last button */
+}
+
+.btn-danger:not(:first-child):not(:last-child),
+.btn-primary:not(:first-child):not(:last-child),
+.btn-success:not(:first-child):not(:last-child) {
+  border-radius: 0; /* Set border-radius to 0 for all middle buttons */
+}
+
+/* Add border for the "Half" button */
+.btn-primary {
+  border-top-right-radius: 4px; /* Set top-right border-radius for the Half button */
+  border-bottom-right-radius: 4px; /* Set bottom-right border-radius for the Half button */
+  border-top-left-radius: 0; /* Set top-left border-radius to 0 for the Half button */
+  border-bottom-left-radius: 0; /* Set bottom-left border-radius to 0 for the Half button */
+}
+
+.btn-primary.active,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary:hover {
+  border-color: #ccc; /* Maintain border color when hovering or active */
+  outline: none; /* Remove the outline when focused */
+}
+
+.slider-container {
+  margin-top: 20px;
+  text-align: center;
+  width: 200px;
+}
+
+.text-input-container {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.text-input-container label {
+  margin-right: 0px;
+}
+
+.text-input-container input {
+  max-width: 50px;
+}

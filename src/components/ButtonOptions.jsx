@@ -22,7 +22,7 @@ function ButtonOptions() {
     setSliderValue(value);
     setTextInput(value.toString());
 
-    // Check if the input value matches a button value
+// Check if the input value matches a button value
     const matchingButton = buttons.find(button => button.value.toString() === value.toString());
     if (matchingButton) {
       handleButtonClick(matchingButton.value);
@@ -46,7 +46,7 @@ function ButtonOptions() {
         {buttons.map((button) => (
           <label 
             key={button.id}
-            className={`btn btn-${button.value} ${sliderValue === button.value ? 'active' : ''}`} 
+            className={`btn ${button.value === 0 ? 'btn-danger' : button.value === 50 ? 'btn-primary' : 'btn-success'} ${sliderValue === button.value ? 'active' : ''}`} 
           >
             <input
               type="radio"
@@ -60,7 +60,7 @@ function ButtonOptions() {
           </label>
         ))}
       </div>
-      <div className="slider-container">
+      <div className="slider-container" style={{ width: '200px' }}>
         <label>% opened</label>
         <Slider min={0} max={100} value={sliderValue} onChange={handleSliderChange} />
       </div>
