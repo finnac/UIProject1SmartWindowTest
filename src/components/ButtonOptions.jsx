@@ -1,39 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import './ButtonOptions.css'; // Create a CSS file for additional styles
+import { ButtonOptionsProvider, useButtonOptions } from './ButtonOptionsContext.jsx'; 
 
-function ButtonOptions({title, windowLabelText}) {
-  const [sliderValue, setSliderValue] = useState(50);
-  const [textInput, setTextInput] = useState('');
-
-  const handleSliderChange = (value) => {
-    setSliderValue(value);
-    setTextInput(value.toString());
-  }
-
-  const handleInputChange = (e) => {
-    let value = e.target.value;
-    if (value > 100) {
-      value = 100;
-    } else if (value < 0) {
-      value = 0;
-    }
-    setSliderValue(value);
-    setTextInput(value.toString());
-
-// Check if the input value matches a button value
-    const matchingButton = buttons.find(button => button.value.toString() === value.toString());
-    if (matchingButton) {
-      handleButtonClick(matchingButton.value);
-    }
-  }
-
-  const handleButtonClick = (value) => {
-    setSliderValue(value);
-    setTextInput(value.toString());
-  }
-
+function ButtonOptions({ id, title, windowLabelText }) {
+  const { sliderValue, textInput, handleSliderChange, handleInputChange, handleButtonClick } = useButtonOptions(id);
   const buttons = [
     { id: "option1", label: "None", value: 0 },
     { id: "option2", label: "Half", value: 50 },
@@ -42,7 +14,7 @@ function ButtonOptions({title, windowLabelText}) {
 
   return (
     <div className="control-wrapper">
-      <h2>{title}</h2> {/* Customizable Title */}
+      <h2>{title}</h2>
       <div className="button-options-container">
         <div className="button-group">
           {buttons.map((button) => (
