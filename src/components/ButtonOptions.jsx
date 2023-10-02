@@ -3,9 +3,15 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import './ButtonOptions.css'; // Create a CSS file for additional styles
 
-function ButtonOptions({ title, windowLabelText, nameoptions }) {
+function ButtonOptions({title, windowLabelText, nameoptions}) {
   const [sliderValue, setSliderValue] = useState(50);
   const [textInput, setTextInput] = useState('');
+
+  const buttons = [
+    { id: "option1", label: "None", value: 0 },
+    { id: "option2", label: "Half", value: 50 },
+    { id: "option3", label: "Full", value: 100 },
+  ];
 
   const handleSliderChange = (value) => {
     setSliderValue(value);
@@ -21,6 +27,11 @@ function ButtonOptions({ title, windowLabelText, nameoptions }) {
     }
     setSliderValue(value);
     setTextInput(value.toString());
+
+    const matchingButton = buttons.find(button => button.value.toString() === value.toString());
+    if (matchingButton) {
+      handleButtonClick(matchingButton.value);
+    }
   }
 
   const handleButtonClick = (value) => {
@@ -31,57 +42,38 @@ function ButtonOptions({ title, windowLabelText, nameoptions }) {
   return (
     <div className="control-wrapper">
       <h2>{title}</h2>
-      <div className="button-group">
-        <label 
-          className={`btn btn-danger ${sliderValue === 0 ? 'active' : ''}`} 
-        >
-          <input
-            type="radio"
-            name={nameoptions}
-            value={0}
-            autoComplete="off"
-            onChange={() => handleButtonClick(0)}
-            checked={sliderValue === 0 && textInput === '0'}
-          /> None
-        </label>
-        <label 
-          className={`btn btn-primary ${sliderValue === 50 ? 'active' : ''}`} 
-        >
-          <input
-            type="radio"
-            name={nameoptions}
-            value={50}
-            autoComplete="off"
-            onChange={() => handleButtonClick(50)}
-            checked={sliderValue === 50 && textInput === '50'}
-          /> Half
-        </label>
-        <label 
-          className={`btn btn-success ${sliderValue === 100 ? 'active' : ''}`} 
-        >
-          <input
-            type="radio"
-            name={nameoptions}
-            value={100}
-            autoComplete="off"
-            onChange={() => handleButtonClick(100)}
-            checked={sliderValue === 100 && textInput === '100'}
-          /> Full
-        </label>
+      <div className="button-options-container">
+        <div className="button-group">
+          {buttons.map((button) => (
+            <label 
+              key={button.id}
+              className={`btn ${button.value === 0 ? 'btn-danger' : button.value === 50 ? 'btn-primary' : 'btn-success'} ${sliderValue === button.value ? 'active' : ''}`} 
+            >
+              <input
+                type="radio"
+                name={nameoptions}
+                value={button.value}
+                autoComplete="off"
+                onChange={() => handleButtonClick(button.value)}
+                checked={sliderValue === button.value && textInput === button.value.toString()}
+              />{" "}
+              {button.label}
+            </label>
+          ))}
+        </div>
+        <div className="slider-container" style={{ width: '200px' }}>
+          <Slider min={0} max={100} value={sliderValue} onChange={handleSliderChange} />
+        </div>
+        <div className="text-input-container">
+          <label>{windowLabelText}</label>
+          <input 
+            type="number" 
+            value={textInput} 
+            onChange={handleInputChange}
+            style={{ maxWidth: '50px' }}
+          />
+        </div>
       </div>
-      <div className="slider-container" style={{ width: '200px' }}>
-        <Slider min={0} max={100} value={sliderValue} onChange={handleSliderChange} />
-      </div>
-      <div className="text-input-container">
-        <label>{windowLabelText}</label>
-        <input 
-          type="number" 
-          value={textInput} 
-          onChange={handleInputChange}
-          style={{ maxWidth: '50px' }}
-        />
-      </div>
-  
     </div>
   );
 }
