@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import './ButtonOptions.css'; // Create a CSS file for additional styles
+import deepmerge from 'deepmerge';
 
-function ButtonOptions({title, windowLabelText, nameoptions}) {
+function ButtonOptions({ title, windowLabelText, nameoptions, onChange, globalSettings }) {
   const [sliderValue, setSliderValue] = useState(50);
   const [textInput, setTextInput] = useState('');
 
@@ -13,9 +14,15 @@ function ButtonOptions({title, windowLabelText, nameoptions}) {
     { id: "option3", label: "Full", value: 100 },
   ];
 
+  useEffect(() => {
+    setSliderValue(globalSettings[nameoptions] || 0);
+    setTextInput((globalSettings[nameoptions] || 0).toString());
+  }, [globalSettings, nameoptions]);
+
   const handleSliderChange = (value) => {
     setSliderValue(value);
     setTextInput(value.toString());
+    onChange(nameoptions, value);
   }
 
   const handleInputChange = (e) => {
@@ -37,6 +44,7 @@ function ButtonOptions({title, windowLabelText, nameoptions}) {
   const handleButtonClick = (value) => {
     setSliderValue(value);
     setTextInput(value.toString());
+    onChange(nameoptions, value);
   }
 
   return (
@@ -45,9 +53,9 @@ function ButtonOptions({title, windowLabelText, nameoptions}) {
       <div className="button-options-container">
         <div className="button-group">
           {buttons.map((button) => (
-            <label 
+            <label
               key={button.id}
-              className={`btn ${button.value === 0 ? 'btn-danger' : button.value === 50 ? 'btn-primary' : 'btn-success'} ${sliderValue === button.value ? 'active' : ''}`} 
+              className={`btn ${button.value === 0 ? 'btn-danger' : button.value === 50 ? 'btn-primary' : 'btn-success'} ${sliderValue === button.value ? 'active' : ''}`}
             >
               <input
                 type="radio"
@@ -66,9 +74,9 @@ function ButtonOptions({title, windowLabelText, nameoptions}) {
         </div>
         <div className="text-input-container">
           <label>{windowLabelText}</label>
-          <input 
-            type="number" 
-            value={textInput} 
+          <input
+            type="number"
+            value={textInput}
             onChange={handleInputChange}
             style={{ maxWidth: '50px' }}
           />
