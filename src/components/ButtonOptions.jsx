@@ -3,7 +3,7 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import './ButtonOptions.css'; // Create a CSS file for additional styles
 
-function ButtonOptions({title, windowLabelText}) {
+function ButtonOptions({title, windowLabelText, nameoptions}) {
   const [sliderValue, setSliderValue] = useState(50);
   const [textInput, setTextInput] = useState('');
 
@@ -52,7 +52,7 @@ function ButtonOptions({title, windowLabelText}) {
             >
               <input
                 type="radio"
-                name="options"
+                name={nameoptions}
                 value={button.value}
                 autoComplete="off"
                 onChange={() => handleButtonClick(button.value)}
