@@ -1,36 +1,28 @@
 
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import ButtonOptions from './components/ButtonOptions'
-import { ButtonOptionsProvider }from './components/ButtonOptionsContext.jsx';
 
 
 function App() {
   return (
-    <ButtonOptionsProvider>
-      <div>
+    <div>
       <ButtonOptions 
-  id="windowOpening" 
-  title="Window Opening" 
-  windowLabelText="% your window is open:" 
-/>
-<ButtonOptions 
-  id="bugScreen" 
-  title="Bug Screen" 
-  windowLabelText="% your bug screen is on:" 
-/>
-<ButtonOptions 
-  id="tint" 
-  title="Tint" 
-  windowLabelText="% your window is tinted:" 
-/>
-<ButtonOptions 
-  id="privacyBlur" 
-  title="Privacy Blur" 
-  windowLabelText="% your window is blurred:" 
-/>
+        title="Window Opening" 
+        windowLabelText="% your window is open:" // Customizable label
+      />
+      <ButtonOptions 
+        title="Bug Screen" 
+        windowLabelText="% your bug screen is on:" // Customizable label
+      />
+      <ButtonOptions 
+        title="Tint" 
+        windowLabelText="% your window is tinted:" // Customizable label
+      />
+       <ButtonOptions 
+        title="Privacy Blur" 
+        windowLabelText="% your window is blurred:" // Customizable label
+      />
     </div>
-    </ButtonOptionsProvider>
-    
   );
 }
 
