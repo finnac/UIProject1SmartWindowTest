@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ButtonOptions from './ButtonOptions';
+import './SettingsManager.css'; // Create a CSS file for additional styles
 
 function SettingsManager() {
     const [globalSettings, setGlobalSettings] = useState({});
@@ -99,33 +100,34 @@ function SettingsManager() {
           <div>
             <input 
               type="text" 
-              placeholder="Enter a name for your settings" 
+              placeholder="Name your setting here" 
               value={settingName}
               onChange={(e) => setSettingName(e.target.value)}
+              className="input-options"
             />
-            <button onClick={() => handleSaveGlobalSettings(settingName)}>Save Global Settings</button>
-            <button onClick={handleLoadGlobalSettings}>Load Global Settings</button>
-
+            <button className="btn btn-info" onClick={() => handleSaveGlobalSettings(settingName)}>Save Global Settings</button>
+            
             <div className="saved-settings-list">
-        <h3>Saved Settings:</h3>
-        <ul>
-            {savedSettingsList.map((savedSetting, index) => (
-            <li key={index}>
-                <button onClick={() => handleLoadSavedSetting(savedSetting)}>{savedSetting.name}</button>
-                <button onClick={() => handleDeleteSavedSetting(index)}>Delete</button>
-            </li>
-            ))}
-        </ul>
-        </div>
-        {selectedSetting &&
-          <div>
-            <h3>Selected Setting: {selectedSetting.name}</h3>
-            <button onClick={handleClearSelectedSetting}>Clear Selected Setting</button>
+              <h3>Saved Settings:</h3>
+              <ul>
+                {savedSettingsList.map((savedSetting, index) => (
+                  <li key={index}>
+                    <button className='btn btn-secondary' onClick={() => handleLoadSavedSetting(savedSetting)}>{savedSetting.name}</button>
+                    <button className='btn btn-danger' onClick={() => handleDeleteSavedSetting(index)}>Delete</button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {selectedSetting && (
+              <div>
+                <h3>Selected Setting: {selectedSetting.name}</h3>
+                <button className='btn btn-info' onClick={handleClearSelectedSetting}>Clear Selected Setting</button>
+                <button className='btn btn-info' onClick={handleLoadGlobalSettings}>Load Global Settings</button>
+              </div>
+            )}
           </div>
-        }
         </div>
-          </div>
-        </div>
+      </div>
        
     );
   }

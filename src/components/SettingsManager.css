@@ -1,0 +1,41 @@
+.btn-secondary {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+
+  .btn-info {
+    color: #fff !important; /* Text color */
+    background-color: #007bff !important; /* Background color */
+    border-color: #007bff !important; /* Border color */
+    padding: 0.375rem 0.75rem !important;
+    margin-bottom: 2px;
+  }
+  
+  .btn-info:hover {
+    background-color: #0056b3 !important; /* Hover background color */
+    border-color: #0056b3 !important; /* Hover border color */
+    padding: 0.375rem 0.75rem !important;
+    margin-bottom: 2px;
+  }
+
+/* Add this CSS to your custom stylesheet */
+.input-options {
+    border: 1px solid #ced4da; /* Border color */
+    background-color: #fff; /* Background color */
+    color: #495057; /* Text color */
+    padding: 0.375rem 0.75rem; /* Padding */
+    font-size: 1rem; /* Font size */
+    border-radius: 0.25rem; /* Border radius */
+    margin-top: 0px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; /* Transition effect */
+  }
+  
+  .input-options:focus {
+    border-color: #007bff; /* Border color on focus */
+    outline: 0; /* Remove default focus outline */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Box shadow on focus */
+  }

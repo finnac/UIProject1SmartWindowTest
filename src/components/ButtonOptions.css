@@ -42,15 +42,20 @@
   width: 100px;
   height: 38px;
   outline: none;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .btn-danger:first-child,
 .btn-primary:first-child,
+.btn-secondary:first-child,
 .btn-success:first-child {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .btn-danger:last-child,
@@ -60,12 +65,16 @@
   border-bottom-right-radius: 4px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .btn-danger:not(:first-child):not(:last-child),
 .btn-primary:not(:first-child):not(:last-child),
 .btn-success:not(:first-child):not(:last-child) {
   border-radius: 0;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .btn-primary {
@@ -73,6 +82,8 @@
   border-bottom-right-radius: 4px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .slider-container {
