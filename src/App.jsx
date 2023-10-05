@@ -6,6 +6,7 @@ import SettingsManager from './components/SettingsManager';
 function App() {
   return (
     <div className="App">
+      <h1>Welcome to your smart window!</h1>
       <SettingsManager />
     </div>
   );
