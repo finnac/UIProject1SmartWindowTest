@@ -97,8 +97,8 @@ function SettingsManager() {
               globalSettings={globalSettings}
             />
           </div>
-          <div>
-            <div className='hstack'>
+          <div style={{  marginLeft: '5px' }}>
+            <div className='hstack' >
             <input 
                 type="text" 
                 placeholder="Name your setting here" 
@@ -106,7 +106,7 @@ function SettingsManager() {
                 onChange={(e) => setSettingName(e.target.value)}
                 className="input-options"
               />
-              <button className="btn btn-info" onClick={() => handleSaveGlobalSettings(settingName)}>Save Global Settings</button>
+              <button className="btn btn-info" onClick={() => handleSaveGlobalSettings(settingName)}>Save Settings</button>
             </div>
             
             <div className="saved-settings-list">
@@ -122,10 +122,10 @@ function SettingsManager() {
             </div>
             {selectedSetting && (
               <div>
-                <h3>Selected Setting: {selectedSetting.name}</h3>
+                <h3>Selected: {selectedSetting.name}</h3>
                 <div className='hstack'>
-                <button className='btn btn-info' onClick={handleClearSelectedSetting}>Clear Selected Setting</button>
-                <button className='btn btn-info' onClick={handleLoadGlobalSettings}>Load Global Settings</button>
+                <button className='btn btn-info' onClick={handleClearSelectedSetting}>Clear Selected Settings</button>
+                <button className='btn btn-info' onClick={handleLoadGlobalSettings}>Load Seleted Settings</button>
                 </div>
               </div>
             )}
