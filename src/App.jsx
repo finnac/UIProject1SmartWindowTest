@@ -6,7 +6,7 @@ import SettingsManager from './components/SettingsManager';
 function App() {
   return (
     <div className="App">
-      <h1>Welcome to your smart window!</h1>
+      <h1 style={{ marginLeft: '5px'}}>Welcome to your smart window!</h1>
       <SettingsManager />
     </div>
   );
