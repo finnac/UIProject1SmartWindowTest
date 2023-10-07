@@ -1,4 +1,4 @@
-# :partly_sunny: Ashley's Smart Window UI Documentation :partly_sunny:
+# :partly_sunny: Ashley's Smart Window UI Code Documentation :partly_sunny:
 
 - You will need to install: React, bootstrap, deepmerge, rc-slider, and bootstrap packages with the npm install command on your terminal.
 - To run, clone this repo in visual studio code and open up a new terminal, and run the command "npm run dev". (I used the run instructions from the module on the class canvas page when we first started setting up to run this myself, so it should follow that procedure aside from needing to install rc-slider, deepmerge, and bootstrap packages which can be found with npm install (insert package name with no parenthesis). )
