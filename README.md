@@ -2,7 +2,8 @@
 
 - You will need to install: React, bootstrap, deepmerge, rc-slider, and bootstrap packages with the npm install command on your terminal.
 - To run, clone this repo in visual studio code and open up a new terminal, and run the command "npm run dev". (I used the run instructions from the module on the class canvas page when we first started setting up to run this myself, so it should follow that procedure aside from needing to install rc-slider, deepmerge, and bootstrap packages which can be found with npm install (insert package name with no parenthesis). )
-- Follow the link provided to you by the terminal and start to access the smart window UI and you should be good to go! 
+- Follow the link provided to you by the terminal and start to access the smart window UI and you should be good to go!
+- I also deployed it here: https://visionary-longma-399036.netlify.app/ 
 
 ## The C level implementation enables a user to:
 - Adjust the tint of their window using either the slider, the text input, the buttons on the text input, or the preset buttons for "None", "Half", and "Full." Any adjustments to either of these will update the other connected ones.The minimum value is 0% and the maximum is 100%. 
